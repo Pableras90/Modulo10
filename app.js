@@ -105,21 +105,31 @@ const swapFirstSecond = ([first, second, third, fourth]) => {
 }
 console.log(swapFirstSecond(arraySwap2));
 
-// firstEqual
-// Implementa una función firstEqual tal que admita multiples strings como argumento de entrada así como un carácter cualquiera, y devuelva un booleano indicando si todos los strings comienzan por dicho carácter o no.
+//................FIRST EQUAL...................... 
 
-// TIP: No utilices bucles. No accedas al primer carácter con corchetes ([]).
 
-/*const firstEqual = (...string, character){
+const firstEqual = (character, ...strings) => strings.every(string => string.startsWith(character));
 
-}*/
+console.log(firstEqual("h", "horse", "rabbit", "hola"))
 
-console.log(firstEqual("rabbit", "horse", "turtle", h))
+//................LONGEST...................... 
+
 
 // longest
 // Implementa una función longest que admita múltiples arrays como entrada, y devuelva el array más largo.
 
 // TIP: No utilices bucles. Hay diversas formas de hacerlo.
+
+
+
+
+
+
+const longest = (...arrays) => arrays.reduce()
+
+
+console.log(longest([1, 2, 3], [1, 2], [1], [2, 4]));
+
 
 // searchInStringV1
 // Implementa una función llamada searchInStringV1 tal que dado un string como parámetro y también un carácter, devuelva cuantas veces aparece dicho carácter en el string.
