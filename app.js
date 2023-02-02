@@ -115,47 +115,45 @@ console.log(firstEqual("h", "horse", "rabbit", "hola"))
 //................LONGEST...................... 
 
 
-// longest
-// Implementa una función longest que admita múltiples arrays como entrada, y devuelva el array más largo.
-
-// TIP: No utilices bucles. Hay diversas formas de hacerlo.
-
-
-
-
-
-
-const longest = (...arrays) => arrays.reduce()
+const longest = (...arrays) => arrays
+    .sort((a, b) => (a.length > b.length ? -1 : 1))
+    .shift();
 
 
 console.log(longest([1, 2, 3], [1, 2], [1], [2, 4]));
 
 
-// searchInStringV1
-// Implementa una función llamada searchInStringV1 tal que dado un string como parámetro y también un carácter, devuelva cuantas veces aparece dicho carácter en el string.
+//................SEARCH IN STRING V1...................... 
 
-// TIP: No utilices bucles.
+const searchInStringV1 = (string, a) => Array.from(string).filter((letra) => letra == a).length;
 
-// TIP: Convierte el string a un array mediante Array.from().
+console.log(searchInStringV1('patata', 'a'));
 
-// searchInStringV2
-// Implementa el mismo ejercicio de antes, llamando a la función searchInStringV2, encontrando otra alternativa sin usar reduce.
 
-// TIP: No utilices bucles.
+//................SEARCH IN STRING V2...................... 
 
-// TIP: Convierte el string a un array mediante Array.from().
 
-// sortCharacters
-// Implementa una función llamada sortCharacters tal que dado un string, lo devuelva con sus letras ordenadas alfabéticamente.
+const searchInStringV2 = (string, a) => Array.from(string).reduce((count, letra) => {
+    if (letra === a) count++; return count;
+}, 0);
+console.log(searchInStringV2('patata', 'a'));
 
-// TIP: No utilices bucles. No modifiques el string original de entrada.
 
-// TIP: Convierte el string a un array mediante Array.from().
+
+//...............SORT CHARACTERS...................... 
+
+const sortCharacters = (string) =>  Array.from(string)
+    .sort((a, b) => (a < b ? -1 : 1));
+
+console.log(sortCharacters("zadsrtg"));
+
+
 
 // shout
 // Implementa una función llamada shout tal que, dadas múltiples palabras como entrada, devuelva todas las palabras concatenadas en un texto donde aparezcan en mayúsculas y con exclamaciones.
 
 // TIP: No utilices bucles.
+
 
 // Lista de la compra
 // Dada la siguiente lista de la compra:
