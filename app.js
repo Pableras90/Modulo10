@@ -142,37 +142,59 @@ console.log(searchInStringV2('patata', 'a'));
 
 //...............SORT CHARACTERS...................... 
 
-const sortCharacters = (string) =>  Array.from(string)
+const sortCharacters = (string) => Array.from(string)
     .sort((a, b) => (a < b ? -1 : 1));
 
 console.log(sortCharacters("zadsrtg"));
 
 
 
-// shout
-// Implementa una función llamada shout tal que, dadas múltiples palabras como entrada, devuelva todas las palabras concatenadas en un texto donde aparezcan en mayúsculas y con exclamaciones.
+//...............SHOUT......................
 
-// TIP: No utilices bucles.
+const shout = (...words) => "¡" + words.join("!").toUpperCase(words) + "!";
 
 
-// Lista de la compra
-// Dada la siguiente lista de la compra:
+console.log(shout("hola", "que tal", "buenos dias"));
 
-// const shoppingCart = [
-//   { category: "Frutas y Verduras", product: "Lechuga", price: 0.8, units: 1 },
-//   { category: "Carne y Pescado", product: "Pechuga pollo", price: 3.75, units: 2 },
-//   { category: "Droguería", product: "Gel ducha", price: 1.15, units: 1 },
-//   { category: "Droguería", product: "Papel cocina", price: 0.9, units: 3 },
-//   { category: "Frutas y Verduras", product: "Sandía", price: 4.65, units: 1 },
-//   { category: "Frutas y Verduras", product: "Puerro", price: 4.65, units: 2 },
-//   { category: "Carne y Pescado", product: "Secreto ibérico", price: 5.75, units: 2 },
-// ];
-// A. Obtén una nueva lista donde aparezca el IVA (21%) de cada producto.
+// LISTA DE LA COMPRA
+
+
+const shoppingCart = [
+    { category: "Frutas y Verduras", product: "Lechuga", price: 0.8, units: 1 },
+    { category: "Carne y Pescado", product: "Pechuga pollo", price: 3.75, units: 2 },
+    { category: "Droguería", product: "Gel ducha", price: 1.15, units: 1 },
+    { category: "Droguería", product: "Papel cocina", price: 0.9, units: 3 },
+    { category: "Frutas y Verduras", product: "Sandía", price: 4.65, units: 1 },
+    { category: "Frutas y Verduras", product: "Puerro", price: 4.65, units: 2 },
+    { category: "Carne y Pescado", product: "Secreto ibérico", price: 5.75, units: 2 },
+];
+//A. Obtén una nueva lista donde aparezca el IVA (21%) de cada producto.
+
+const getIva = product => product.map(number => number.product + " = " + number.price * 0.21);
+
+console.log(getIva(shoppingCart));
+
 
 // B. Ordena la lista de más a menos unidades.
 
+const sortList = array => array.sort((a, b) => a.units > b.units ? -1 : 1);
+
+console.log(sortList(shoppingCart));
+
 // C. Obtén el subtotal gastado en droguería.
+
+
+const subTotal = parameter => parameter
+    .filter(parameter => parameter.category === "Droguería")
+    .map(parameter => parameter.price * parameter.units + ((parameter.price * parameter.units) * 0.21))
+    .reduce((a, b) => a + b, 0);
+
+console.log(subTotal(shoppingCart));
 
 // D. Obtén la lista por consola en formato "Producto -> Precio Total €" y ordenada por categoría.
 
-// TIP: No utilices bucles.
+const showList = (parameter) => parameter
+    .sort((a, b) => a.category > b.category ? 1 : -1)
+    .map(parameter => "Producto: " + parameter.category + " -> " + "Precio Total" + " = " + (parameter.price * parameter.units + ((parameter.price * parameter.units) * 0.21)) + "€");
+
+console.log(showList(shoppingCart));
